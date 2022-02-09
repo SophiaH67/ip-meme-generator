@@ -10,7 +10,7 @@ type Meme struct {
 	opPath string
 	edPath string
 	ip string
-	outputPath string
+	OutputPath string
 }
 
 func New(ip string) Meme {
@@ -18,7 +18,7 @@ func New(ip string) Meme {
 		opPath: "./assets/op.mp4",
 		edPath: "./assets/ed.mp4",
 		ip: ip,
-		outputPath: fmt.Sprintf("./output/%s.mp4", ip),
+		OutputPath: fmt.Sprintf("./output/%s.mp4", ip),
 	}
 	return m
 }
@@ -53,7 +53,7 @@ func (m *Meme) Render() {
 	err := ffmpeg.Output([]*ffmpeg.Stream{
 			base,
 			ffmpeg.Input("./assets/sound.mp3"),
-		}, m.outputPath, ffmpeg.KwArgs{"y": "", "format": "matroska"}).
+		}, m.OutputPath, ffmpeg.KwArgs{"y": "", "format": "matroska"}).
 		Run()
 
 	if err != nil {
