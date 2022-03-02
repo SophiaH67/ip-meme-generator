@@ -1,6 +1,7 @@
 FROM golang:1.16-alpine as builder
 WORKDIR /app
-COPY ./ ./ 
+COPY ./ ./
+ENV CGO_ENABLED=0
 RUN go build -o main main.go 
 
 FROM jrottenberg/ffmpeg:ubuntu as runner
